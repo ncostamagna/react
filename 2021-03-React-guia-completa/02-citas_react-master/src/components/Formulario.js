@@ -18,6 +18,7 @@ const Formulario = ({crearCita}) => {
     const actualizarState = e => {
         actualizarCita({
             ...cita,
+            // agrego al valor correcto
             [e.target.name]: e.target.value 
         })
     }

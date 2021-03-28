@@ -27,8 +27,8 @@ npx create-react-app nombre-del-proyecto
 ```
 
 # Webpack
-<img src="imagen/1.png"><br />
-<img src="imagen/2.png"><br />
+<img src="images/1.png"><br />
+<img src="images/2.png"><br />
 
 # Funcionalidades
 
