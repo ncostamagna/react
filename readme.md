@@ -9,6 +9,7 @@
     - [Props](#props)
 - [React Hooks](#react-hooks)
     - [useState](#usestate)
+    - [useEffect](#useeffect)
 
 
 # Introduccion y Bases
@@ -63,6 +64,43 @@ function Header({titulo}) {
 }
 ```
 
+## Fragment
+Un patrón común en React es que un componente devuelva múltiples elementos. Los Fragmentos te permiten agrupar una lista de hijos sin agregar nodos extra al DOM.
+
+```jsx
+import React, Fragment from 'react';
+
+const Formulario = ({crearCita}) => {
+    return ( 
+        <Fragment>
+            <h2>Crear Cita</h2>
+            <form > </form>
+            <footer>my footer</footer>
+        </Fragment>
+    );
+}
+
+export default Formulario;
+```
+
+## PropTypes
+Nos permite documentar la aplicacion para saber que se le deben pasar a cada campo, van siempre abajo de todo
+
+```jsx
+import PropTypes from 'prop-types';
+
+const Formulario = ({crearCita}) => {
+    // TODO
+}
+
+Formulario.propTypes = {
+    crearCita: PropTypes.func.isRequired // es una funcion y es requerida
+}
+ 
+export default Formulario;
+```
+
+
 #  React Hooks
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
 El codigo es menor<br />
@@ -87,4 +125,30 @@ const [clientes, guardarCliente] = useState([]);
 
 // cliente        -> tiene el state actual
 // guardarCliente -> cambia el state, unicamente podemos cambiarlo de esta manera
+```
+
+## useEffect
+Permite realizar ciertas operaciones cuando el state cambia, se ejecuta cuando el componente esta listo o cuando hay cambios en el componente.
+
+```jsx
+useEffect( () => {
+    console.log("listo");
+})
+```
+
+Para que se ejecute solo una vez debemos pasarle un array vacio
+
+```jsx
+useEffect( () => {
+    console.log("listo");
+}, [])
+```
+
+cada vez que cambie el state se ejecuta
+
+```jsx
+const [misValores, guardarMisValores] = useState([])
+useEffect( () => {
+    console.log("listo");
+}, [misValores])
 ```
