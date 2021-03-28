@@ -7,6 +7,9 @@
 - [Webpack](#webpack)
 - [Funcionalidades](#funcionalidades)
     - [Props](#props)
+    - [Fragment](#fragment)
+    - [PropTypes](#proptypes)
+    - [Emotion](#emotion)
 - [React Hooks](#react-hooks)
     - [useState](#usestate)
     - [useEffect](#useeffect)
@@ -100,6 +103,34 @@ Formulario.propTypes = {
 export default Formulario;
 ```
 
+## Emotion
+Forma mas simple de generar css y combinarlo con React
+```jsx
+import styled from '@emotion/styled';
+
+const ContenedorHeader = styled.header`
+    background-color: #26C6DA;
+    padding: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+`;
+
+const Header = ({titulo}) => {
+    return ( 
+        <ContenedorHeader>
+            <TextoHeader>{titulo}</TextoHeader>
+        </ContenedorHeader>
+     );
+}
+```
+
+## react-transition-group
+Nos permite realizar animaciones
+
+```jsx
+
+
+```
 
 #  React Hooks
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
