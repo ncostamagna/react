@@ -14,6 +14,7 @@
 - [React Hooks](#react-hooks)
     - [useState](#usestate)
     - [useEffect](#useeffect)
+    - [useContext](#usecontext)
 
 
 # Introduccion y Bases
@@ -179,4 +180,75 @@ const [misValores, guardarMisValores] = useState([])
 useEffect( () => {
     console.log("listo");
 }, [misValores])
+```
+
+## useContext
+Puedes pasar el state o funciones desde el componente principal hasta los hijos, sin necesidad de pasarlo por cada componente. Tambien se puede actualizar el state desde el hijo.
+- Si el proyecto es sencillo, tal vez props sea una mejor opcion
+- Context hace un poco mas commplicada la reutilizacion de componentes
+<br />
+
+**Archivo Context**
+```jsx
+import React, { createContext, useState, useEffect } from 'react';
+
+// Crear el Context
+export const CategoriasContext = createContext();
+
+// Provider es donde se encuentran las funciones y state
+const CategoriasProvider = (props) => {
+
+    return (
+        <CategoriasContext.Provider
+            value={{
+                categorias // valores que van a estar disponibles en los difeentes componentes
+            }}
+        >
+            {props.children} //De esta forma tomara los diferentes componentes que se pasaran por aca
+        </CategoriasContext.Provider>
+    )
+}
+
+export default CategoriasProvider;
+```
+<br />
+
+**Archivo App.js**
+```jsx
+import CategoriasProvider from './context/CategoriasContext';
+
+function App() {
+  return (
+      <CategoriasProvider> // todo lo del context estara disponible dentro del tag
+        <RecetasProvider>
+          <ModalProvider>
+              <Header />
+
+              <div className="container mt-5">
+                  <div className="row">
+                      <Formulario />
+                  </div>
+
+                  <ListaRecetas />
+              </div>
+
+          </ModalProvider>
+        </RecetasProvider>
+      </CategoriasProvider>
+  );
+}
+
+```
+<br />
+
+**Tomar el context en Formulario.js**
+```jsx
+import React, { useContext, useState } from 'react';
+import { CategoriasContext } from '../context/CategoriasContext';
+
+const Formulario = () => {
+    // vamos a tener disponible todo lo que este en el value
+    const { categorias } = useContext(CategoriasContext);
+
+}
 ```
