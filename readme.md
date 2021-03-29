@@ -10,6 +10,7 @@
     - [Fragment](#fragment)
     - [PropTypes](#proptypes)
     - [Emotion](#emotion)
+    - [react-transition-group](#react-transition-group)
 - [React Hooks](#react-hooks)
     - [useState](#usestate)
     - [useEffect](#useeffect)
@@ -127,10 +128,6 @@ const Header = ({titulo}) => {
 ## react-transition-group
 Nos permite realizar animaciones
 
-```jsx
-
-
-```
 
 #  React Hooks
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
