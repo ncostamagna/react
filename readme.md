@@ -129,6 +129,29 @@ const Header = ({titulo}) => {
 ## react-transition-group
 Nos permite realizar animaciones
 
+## react-router-dom
+Nos permite agregar ruteos en la aplicacion hacia los diferentes componentes
+
+```jsx
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// Componentes
+import Login from './components/auth/Login';
+import NuevaCuenta from './components/auth/NuevaCuenta';
+import Proyectos from './components/proyectos/Proyectos';
+
+function App() {
+  return (
+    <Router>
+        <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
+            <RutaPrivada exact path="/proyectos" component={Proyectos} />
+        </Switch>
+    </Router>
+  );
+}
+```
 
 #  React Hooks
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
@@ -250,5 +273,77 @@ const Formulario = () => {
     // vamos a tener disponible todo lo que este en el value
     const { categorias } = useContext(CategoriasContext);
 
+}
+```
+
+
+## useReducer
+Funciona igual que redux y con la sencilles de context
+
+```jsx
+
+const inicialState = {
+    nuevoProyecto: false
+}
+const [state, dispatch] = useReducer(proyectoReducer, initialState)
+
+```
+
+**reducer**
+```jsx
+import { 
+    FORMULARIO_PROYECTO, 
+    OBTENER_PROYECTOS,
+    AGREGAR_PROYECTO,
+    PROYECTO_ERROR,
+    VALIDAR_FORMULARIO,
+    PROYECTO_ACTUAL,
+    ELIMINAR_PROYECTO
+} from '../../types';
+
+
+export default (state, action) => {
+    switch(action.type) {
+        case FORMULARIO_PROYECTO:
+            return {
+                ...state,
+                formulario: true
+            }
+        case OBTENER_PROYECTOS:
+            return {
+                ...state,
+                proyectos: action.payload
+            }
+        case AGREGAR_PROYECTO:
+            return {
+                ...state,
+                proyectos: [...state.proyectos, action.payload],
+                formulario: false,
+                errorformulario: false
+            }
+        case VALIDAR_FORMULARIO:
+            return {
+                ...state, 
+                errorformulario: true
+            }
+        case PROYECTO_ACTUAL:
+            return {
+                ...state,
+                proyecto: state.proyectos.filter(proyecto => proyecto._id === action.payload )
+            }
+        case ELIMINAR_PROYECTO:
+            return {
+                ...state,
+                proyectos: state.proyectos.filter(proyecto => proyecto._id !== action.payload ),
+                proyecto: null
+            }
+        case PROYECTO_ERROR:
+            return {
+                ...state,
+                mensaje: action.payload
+            }
+        default:
+            return state;
+    }
 }
 ```
