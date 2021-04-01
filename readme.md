@@ -31,6 +31,7 @@ Anteriormente los componentes se creaban como clases, hoy en dia se utilizan dir
 
 ## Extensiones Chrome
 - React Developer Tools
+- Redux Developer Tools
 
 ## JSX
 JavaScript con HTML
@@ -347,3 +348,32 @@ export default (state, action) => {
     }
 }
 ```
+
+
+# Redux
+Va a permitir manejar el state de las aplicaciones mas facil conforme van creciendo.<br />
+- Solo tiene un state principal (parecido a context)
+- El state cambia de acuerdo a lo que sucede en la interfaz de usuario
+- ciertas funciones van a cambiar el state
+- el usuario es el que utiliza estas funciones y cambia el state
+
+## Cuando utilizarlo
+Si la aplicacion es sencilla y pequeña no se necesita utilizar Redux, utilizar mejor hooks o context
+<br /><br />
+Si la aplicacion es grande y sera mantenida por varias personas, Redux sera de gran ayuda<br /><br />
+
+## Principios
+- Solo existe un store con todo el state de la aplicacion
+- Componentes o vistas no deben modificar el state directamente
+- El state se modifica por medio de funciones (actions)
+
+<br />
+
+**Store** -> contiene el state (1 por aplicacion)<br />
+**Dispatch** -> ejecuta una accion que utiliza el state<br />
+**Actions** -> objetos js, tienen un tipo y payload (datos)<br />
+**Suscribe** -> similar a un event listener para el state<br />
+**Reducers** -> Funciones que saben que hacer co las acciones y el payload<br />
+
+
+<img src="images/3.png"><br />
