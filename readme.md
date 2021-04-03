@@ -15,7 +15,11 @@
     - [useState](#usestate)
     - [useEffect](#useeffect)
     - [useContext](#usecontext)
-
+    - [useReducer](#usereducer)
+- [Redux](#redux)
+    - [Cuando utilizarlo](#cuando-utilizarlo)
+    - [Principios](#principios)
+    - [Instalacion](#instalacion)
 
 # Introduccion y Bases
 Anteriormente los componentes se creaban como clases, hoy en dia se utilizan directamente funciones
@@ -31,7 +35,7 @@ Anteriormente los componentes se creaban como clases, hoy en dia se utilizan dir
 
 ## Extensiones Chrome
 - React Developer Tools
-- Redux Developer Tools
+- Redux DevTools
 
 ## JSX
 JavaScript con HTML
@@ -377,3 +381,9 @@ Si la aplicacion es grande y sera mantenida por varias personas, Redux sera de g
 
 
 <img src="images/3.png"><br />
+
+## Instalacion
+
+**redux** -> instala redux<br />
+**react-redux** -> asocia react con redux<br />
+**redux-thunk** -> me permite utilizar redux de forma asincrona<br />
