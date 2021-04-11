@@ -20,6 +20,7 @@
     - [Cuando utilizarlo](#cuando-utilizarlo)
     - [Principios](#principios)
     - [Instalacion](#instalacion)
+- [Next](#next)
 
 # Introduccion y Bases
 Anteriormente los componentes se creaban como clases, hoy en dia se utilizan directamente funciones
@@ -387,3 +388,30 @@ Si la aplicacion es grande y sera mantenida por varias personas, Redux sera de g
 **redux** -> instala redux<br />
 **react-redux** -> asocia react con redux<br />
 **redux-thunk** -> me permite utilizar redux de forma asincrona<br />
+
+# Next
+Me permite crear sitios web utilizando Server Site Rendering
+
+## Server Side Rendering (SSR)
+Es el servidor el que se encarga de generar el HTML<br />
+
+**Beneficios**
+- El sitio web carga mas rapido ya que los recursos de la computadora no son utilizados sino que el del servidor
+- Se recomienda para aplicaciones grandes o aplicaciones que van a crecer a futuro
+- Mejora el SEO
+
+## Aplicacion
+
+```sh
+# crear proyecto
+npx create-next-app myproject
+
+# correr local
+npm run dev
+
+
+```
+
+**pages**<br />
+genero las paginas, automaticamente genera las paginas a medida que las vamos agregando aca
+
