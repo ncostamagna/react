@@ -415,3 +415,16 @@ npm run dev
 **pages**<br />
 genero las paginas, automaticamente genera las paginas a medida que las vamos agregando aca
 
+## Deploy
+Para deployar debemos ejecutar el build
+```sh
+# Exportamos el proyecto, nos genera una carpeta out que es lo que vamos a subir
+next export # o bien -> npm run export, debemos ejecutar primero el build
+
+npm run build 
+# en lugar de usar public utilizamos out
+
+```
+
+# Gatsby
+Excelente velocidad de carga
