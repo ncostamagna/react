@@ -1,26 +1,38 @@
-# Indice
 - [Introduccion y Bases](#introduccion-y-bases)
-    - [Extensiones VSC](#extensiones-vsc)
-    - [Extensiones Chrome](#extensiones-chrome)
-    - [JSX](#jsx)
-    - [Inicializacion proyecto](#inicializacion-proyecto)
+  * [Extensiones VSC](#extensiones-vsc)
+  * [Extensiones Chrome](#extensiones-chrome)
+  * [JSX](#jsx)
+  * [Inicializacion proyecto](#inicializacion-proyecto)
 - [Webpack](#webpack)
 - [Funcionalidades](#funcionalidades)
-    - [Props](#props)
-    - [Fragment](#fragment)
-    - [PropTypes](#proptypes)
-    - [Emotion](#emotion)
-    - [react-transition-group](#react-transition-group)
+  * [Props](#props)
+  * [Fragment](#fragment)
+  * [PropTypes](#proptypes)
+  * [Emotion](#emotion)
+  * [react-transition-group](#react-transition-group)
+  * [react-router-dom](#react-router-dom)
+  * [react-helment](#react-helment)
 - [React Hooks](#react-hooks)
-    - [useState](#usestate)
-    - [useEffect](#useeffect)
-    - [useContext](#usecontext)
-    - [useReducer](#usereducer)
+  * [useState](#usestate)
+  * [useEffect](#useeffect)
+  * [useContext](#usecontext)
+  * [useReducer](#usereducer)
 - [Redux](#redux)
-    - [Cuando utilizarlo](#cuando-utilizarlo)
-    - [Principios](#principios)
-    - [Instalacion](#instalacion)
+  * [Cuando utilizarlo](#cuando-utilizarlo)
+  * [Principios](#principios)
+  * [Instalacion](#instalacion)
 - [Next](#next)
+  * [Server Side Rendering (SSR)](#server-side-rendering--ssr-)
+  * [Aplicacion](#aplicacion)
+  * [Deploy](#deploy)
+- [Gatsby](#gatsby)
+  * [JAMStack](#jamstack)
+  * [Instalacion](#instalacion-1)
+  * [Aplicacion](#aplicacion-1)
+  * [Deploy](#deploy-1)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # Introduccion y Bases
 Anteriormente los componentes se creaban como clases, hoy en dia se utilizan directamente funciones
@@ -158,6 +170,8 @@ function App() {
   );
 }
 ```
+## react-helment
+Me permite modificar todo lo que esta arriba del body, se usa mas para SSR
 
 #  React Hooks
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
@@ -423,8 +437,54 @@ next export # o bien -> npm run export, debemos ejecutar primero el build
 
 npm run build 
 # en lugar de usar public utilizamos out
-
 ```
 
 # Gatsby
-Excelente velocidad de carga
+- Excelente velocidad de carga
+- Sitios estaticos con React
+- mas avanzado que Next.JS
+<br />
+
+**¿Que es Gatsby?**<br />
+- Es un generador de sitios web estaticos, al final te crea una serie de archivos HTML
+- Utiliza React, Webpack, GraphQL, ES6+, CSS
+- Utiliza **JAMStack** (presente y futuro del desarrollo web)
+- Su principal caracteristica es la creacion de sitios web de gran velocidad
+
+## JAMStack
+
+**J**avascript<br />
+**A**pi<br />
+**M**arkup (codigo HTML)<br />
+
+**Beneficios de JAMStack y sitios estaticos**
+- Velicidad (la velocidad es importante para posicionarse primero en las busquedas)
+- Seguridad (queda separado el back del front)
+- Bajo coste (debido a SSR), obtiene los datos desde la API y no de la BD
+- Se pueden utilizar sin conexion a internet, se puede crear PWA
+- Escalable
+<br />
+
+Gastby crea archivos estaticos cada vez que el usuario ingresa al sitio web, ahorra el tener que ir a una BD, pero si tienes un sitio web, por ejemplo, de noticias que cada 5 minutos se sube una noticia, propablemente **Gatsby no sea tu mejor opcion** ya que crea archivos estaticos de la base de datos, no es en tiempo real
+
+## Instalacion
+
+```sh
+npm i -g gatsby-cli
+
+gatsby new myproject # creo un nuevo proyecto 
+cd myproject
+gatsby develop # levanto la app local
+```
+
+## Aplicacion
+
+Podemos hacer consultas a gatsby, por ejemplo las imagenes que tiene en el filesystem, mediante graphQL en /___grapqh<br />
+Los archivos estaticos los vamos a obtener mediante graphQL desde la aplicacion<br /> 
+Gatsby te mejora y optimiza las imagenes para que pesen menos al momento de obtenerlas<br />
+
+## Deploy
+```sh
+gatsby build # Todo se coloca en la carpeta public
+
+```
