@@ -1,0 +1,22 @@
+{
+    "Message": "Success",
+    "Type": 100,
+    "Data": [
+        {
+            "CoinInfo": {
+                "Id": "1234",
+                "Name": "pija",
+                "FullName": "culo",
+                "Internal": "teta"
+            }
+        },
+        {
+            "CoinInfo": {
+                "Id": "5678",
+                "Name": "pija 2",
+                "FullName": "culo 2",
+                "Internal": "teta 2"
+            }
+        }
+    ]
+}

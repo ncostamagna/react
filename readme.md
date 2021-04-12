@@ -602,3 +602,40 @@ userEvent.click(btn); // dar click
 
 // Lugo de oprimir el boton
 ```
+
+### Test API
+En lugar de ir a consultar una API utilizaremos mocks, agregariamos un folder **__mocks_ _**
+
+```js
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import Formulario from '../components/Formulario'
+import {monedas, criptos} from '../__mocks__/criptomonedas'
+import axios from 'axios';
+
+const mockAxios = axios;
+
+test('<useCriptomonedas />', async () => {
+
+    // le mandamos los mocks al request, sin necesidad que consulte la api
+    mockAxios.get = jest.fn().mockResolvedValue({
+        data: criptos
+    })
+
+    render(<Formulario />);
+
+    const monedasDropdown = screen.getByTestId("select-monedas");
+    expect(monedasDropdown.children.length).toEqual(monedas.length + 1);
+
+
+    const opciones = await screen.findAllByTestId("criptos");
+    expect(opciones).toHaveLength(2)
+});
+```
+
+## Cypress
+Nos permite realizar lo mismo que el usuario, parecido a selenium
+```js
+npm i --save-dev cypress
+npx cypress open
+```
