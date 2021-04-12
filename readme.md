@@ -488,3 +488,117 @@ Gatsby te mejora y optimiza las imagenes para que pesen menos al momento de obte
 gatsby build # Todo se coloca en la carpeta public
 
 ```
+
+# Testing
+
+## Tipos de Test
+
+### End To End
+Se comporta como el usuario, da clicks y llena formularios
+
+### Integracion
+Revisa que varias partes de la aplicacion funcionen bien juntas, a un arbol de componentes
+
+### Unitarias
+Una parte por si sola funciona bien, a un componente
+
+### Static
+Identificas errores mientras los vas escribiendo
+
+## Herramientas recomendadas
+- Jest
+- React Testing Library (Incluido en CRA) 
+- Cypress (me va a permmitir hacer test E2E)<br />
+(CRA: Create React App)<br /><br />
+**Escribe pruebas, no muchas. La mayoria de integracion**<br />
+
+## Aplicacion
+- podemos crear un archivo con **xxx.test.js o xxx.spec.js**
+- podemos crear un folder **__tests_ _** y poner las pruebas ahi
+
+```js
+// en Jest podemos usar tanto it como test
+test('mi prueba', () => {
+
+});
+
+it('mi prueba', () => {
+
+});
+```
+
+```js
+import React from 'react'
+import Formulario from '../components/Formulario'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect' // para utilizat toBeInTheDocument();
+
+test('<Formulario /> Cargar el formulario y revisar que sea correcto', () => {
+    const wrapper = render(<Formulario />);
+    wrapper.debug(); // me permite mostrar el componente entero
+
+    expect(wrapper.getByText('Crear Cita')).toBeInTheDocument();
+});
+
+```
+
+```js
+// podemos utilizar screen para un codigo mas limpio
+import React from 'react'
+import Formulario from '../components/Formulario'
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect' 
+
+test('<Formulario /> Cargar el formulario y revisar que sea correcto', () => {
+    render(<Formulario />);
+    expect(screen.getByText('Crear Cita')).toBeInTheDocument();
+});
+
+```
+
+```js
+// se recomienda agregar un id de test a los elementos
+
+return ( 
+        <Fragment>
+            <h2 data-testid="titulo">Crear Cita</h2>
+
+            ...
+```
+
+### Cleanup
+Me permite limpiar un componente una vez utilizado, pero en las ultimas versiones ya no se usa, se limpian automaticamente
+
+### afterEach
+Me permite ejecutar algo antes de cada prueba
+
+### fireEvent
+Me permite ejecutar eventos, pero en las ultimas versiones ya no se utiliza
+```js
+const btn = screen.getByTestId('myID');
+fireEvent.click(btn);
+
+// Espero que se muestre una alerta al presionar el boton, por ejemplo
+```
+
+```js
+// pasar valores al formulario
+fireEvent.change(screen.getByTestId('mascota'), {
+    target: {
+        value: 'Paquito'
+    }
+});
+```
+### userEvent
+Me permite ejecutar eventos, es el que se utiliza ahora
+
+```js
+// vamos a escribir en el form
+userEvent.type(screen.getByTestId('mascota'), 'Paquito')
+
+
+const btn = screen.getByTestId('btn-submit');
+userEvent.click(btn); // dar click
+
+// Lugo de oprimir el boton
+```
