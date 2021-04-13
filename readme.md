@@ -392,7 +392,7 @@ Si la aplicacion es grande y sera mantenida por varias personas, Redux sera de g
 **Dispatch** -> ejecuta una accion que utiliza el state<br />
 **Actions** -> objetos js, tienen un tipo y payload (datos)<br />
 **Suscribe** -> similar a un event listener para el state<br />
-**Reducers** -> Funciones que saben que hacer co las acciones y el payload<br />
+**Reducers** -> Funciones que saben que hacer con las acciones y el payload<br />
 
 
 <img src="images/3.png"><br />
