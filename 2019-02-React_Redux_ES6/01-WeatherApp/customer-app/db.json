@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "dni": "23111",
+      "name": "CELESTE COSTAMAGNA",
+      "age": "32"
+    },
+    {
+      "id": 2,
+      "dni": "33444455",
+      "name": "Camila a",
+      "age": 21
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
