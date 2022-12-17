@@ -182,6 +182,22 @@ function App() {
 
 Me permite modificar todo lo que esta arriba del body, se usa mas para SSR
 
+## gsap
+
+Me permite realizar animaciones:
+
+```tsx
+const counterElement = useRef<HTMLHeadingElement>(null);
+useEffect(() => {
+  const tl = gsap.timeline();
+
+  tl.to(counterElement.current, { y: -10, duration: 0.2, ease: "ease.out" }).to(
+    counterElement.current,
+    { y: 0, duration: 1, ease: "bounce.out" }
+  );
+}, [counter]);
+```
+
 # React Hooks
 
 Nos van a permitir actualizar el state sin necesidad de crear un **Class Component**<br />
@@ -236,6 +252,24 @@ const [misValores, guardarMisValores] = useState([]);
 useEffect(() => {
   console.log("listo");
 }, [misValores]);
+```
+
+## useRef
+
+me permite hacer referencia a un objeto HTML
+
+```tsx
+// HTMLHeadingElement es propio de ts
+const counterElement = useRef<HTMLHeadingElement>(null);
+
+// para obtener el elemento uso counterElement.current, obtener la referencia
+
+// mantengo la referencia al elemento
+return (
+  <>
+    <h2 ref={counterElement}>{counter}</h2>
+  </>
+);
 ```
 
 ## useContext
