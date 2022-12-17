@@ -12,15 +12,19 @@
   - [react-transition-group](#react-transition-group)
   - [react-router-dom](#react-router-dom)
   - [react-helment](#react-helment)
+  - [gsap](#gsap)
 - [React Hooks](#react-hooks)
   - [useState](#usestate)
   - [useEffect](#useeffect)
+  - [useRef](#useref)
+  - [useLayoutEffect](#uselayouteffect)
   - [useContext](#usecontext)
   - [useReducer](#usereducer)
 - [Redux](#redux)
   - [Cuando utilizarlo](#cuando-utilizarlo)
   - [Principios](#principios)
   - [Instalacion](#instalacion)
+- [Tailwind](#tailwind)
 - [Next](#next)
   - [Server Side Rendering (SSR)](#server-side-rendering--ssr-)
   - [Aplicacion](#aplicacion)
@@ -30,6 +34,20 @@
   - [Instalacion](#instalacion-1)
   - [Aplicacion](#aplicacion-1)
   - [Deploy](#deploy-1)
+- [Testing](#testing)
+  - [Tipos de Test](#tipos-de-test)
+    - [End To End](#end-to-end)
+    - [Integracion](#integracion)
+    - [Unitarias](#unitarias)
+    - [Static](#static)
+  - [Herramientas recomendadas](#herramientas-recomendadas)
+  - [Aplicacion](#aplicacion-2)
+    - [Cleanup](#cleanup)
+    - [afterEach](#aftereach)
+    - [fireEvent](#fireevent)
+    - [userEvent](#userevent)
+    - [Test API](#test-api)
+  - [Cypress](#cypress)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -61,6 +79,8 @@ JavaScript con HTML
 ```sh
 npx create-react-app nombre-del-proyecto
 
+# with typescript
+npx create-react-app project-name --template typescript
 ```
 
 # Webpack
@@ -272,6 +292,10 @@ return (
 );
 ```
 
+## useLayoutEffect
+
+Misma forma que useEffect, pero se ejecuta despues que se construyo el html
+
 ## useContext
 
 Puedes pasar el state o funciones desde el componente principal hasta los hijos, sin necesidad de pasarlo por cada componente. Tambien se puede actualizar el state desde el hijo.
@@ -459,6 +483,45 @@ Si la aplicacion es grande y sera mantenida por varias personas, Redux sera de g
 **redux** -> instala redux<br />
 **react-redux** -> asocia react con redux<br />
 **redux-thunk** -> me permite utilizar redux de forma asincrona<br />
+
+# Tailwind
+
+## Setup
+
+```sh
+npx create-react-app project-name --template typescript
+cb project-name
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+configure tailwind.config.js file:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+add the tailwind directives to your CSS (index.css)
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+run project
+
+```sh
+npm start
+```
 
 # Next
 
@@ -711,5 +774,3 @@ Nos permite realizar lo mismo que el usuario, parecido a selenium
 npm i --save-dev cypress
 npx cypress open
 ```
-
-# Typescript
