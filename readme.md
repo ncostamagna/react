@@ -49,8 +49,6 @@
     - [Test API](#test-api)
   - [Cypress](#cypress)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 # Introduccion y Bases
 
 Anteriormente los componentes se creaban como clases, hoy en dia se utilizan directamente funciones
